@@ -20,6 +20,13 @@ debug:
 
 run:
 
-    docker run -p 9200:9200 -p 9300:9300 --user=`id -u` --name es_instance -i -P alpine-elasticsearch
+    docker run -p 9200:9200 -p 9300:9300 --name es_instance -i -P alpine-elasticsearch
+
+run with mapped data dir:
+
+        docker run -p 9200:9200 -p 9300:9300 --user=$(id -u):$(id -u) -v ~/git/docker-alpine-elasticsearch/data:/usr/share/elasticsearch/data --name es_instance -i -P alpine-elasticsearch
 
 
+shell login to running container with container-id:
+
+    docker exec -i -t 6617245d262f /bin/bash
