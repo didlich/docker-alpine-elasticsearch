@@ -67,6 +67,9 @@ RUN set -ex; \
 		elasticsearch -v; \
 	fi
 
+# fix error with bean registration
+COPY java.policy /usr/lib/jvm/java-1.8-openjdk/jre/lib/security/
+
 COPY config ./config
 COPY docker-entrypoint.sh /
 
